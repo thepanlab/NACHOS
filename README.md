@@ -11,7 +11,7 @@ This package is supported for *Linux*. The package has been tested on Linux: Ubu
 
 ## Instructions
 * How to run the training can be found in [`/docs/readme_training.md`](/docs/readme_training.md)
-* How to run the results processing can be found in `/docs/readme_results_processing.md`
+* How to run the results processing can be found in [`/docs/readme_results_processing.md`](/docs/readme_results_processing.md)
 
 ## Data
 The data used in the paper can be found in [Zenodo](https://zenodo.org/records/14847200).
