@@ -1,7 +1,7 @@
 # Medical Imaging Framework
 
 ## Installation
-This package doesn't need to be installed. However, it requires for command lines to be run from `mif_outer/scripts`. More information in the [`Instructions`](#Instructions).
+This package doesn't need to be installed. However, it requires for command lines to be run from the directory`mif_outer/scripts`. More information in the [`Instructions`](#Instructions).
 
 ## Python Dependencies
 This package utilized Tensorflow2. All requirement needed can be found in [`requirements.txt`](requirements.txt)
