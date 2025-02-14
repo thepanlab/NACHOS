@@ -1,5 +1,8 @@
 # Medical Imaging Framework
 
+## Installation
+This library doesn't need to be install. However, it requirement for run command lines from `mif_outer/scripts`. More information in the `Instructions`.
+
 ## Python Dependencies
 The library requirement can be foind in `requirements.txt`
 
