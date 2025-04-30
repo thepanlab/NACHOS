@@ -2,6 +2,13 @@ import termcolor
 import fasteners
 import dill
 import os
+import tensorflow as tf
+
+class StepLearningRateLogger(tf.keras.callbacks.Callback):
+    def on_train_batch_end(self, batch, logs=None):
+        lr = self.model.optimizer._decayed_lr(tf.float32).numpy()
+        step = self.model.optimizer.iterations.numpy()
+        print(f" Step {step}: Learning rate = {lr:.6f}")
 
 
 def read_log_items(training_output_path, job_name, item_list, rank=None):
