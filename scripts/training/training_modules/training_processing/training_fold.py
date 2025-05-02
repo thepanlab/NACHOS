@@ -140,9 +140,9 @@ class _FoldTrainingInfo():
                 patience=self.config['hyperparameters']['patience'], 
                 restore_best_weights=True
             )
-            self.callbacks = (early_stopping, checkpoints, step_lr_logger)
+            self.callbacks = (step_lr_logger, early_stopping, checkpoints)
         else:
-            self.callbacks = (checkpoints, step_lr_logger)
+            self.callbacks = (step_lr_logger, checkpoints)
         
 
 
