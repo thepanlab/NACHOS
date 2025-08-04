@@ -4,7 +4,7 @@
 This package doesn't need to be installed. However, it requires for command lines to be run from the directory`mif_outer/scripts`. More information in the [`Instructions`](#Instructions).
 
 ## Python Dependencies
-This package utilized Tensorflow2. All requirement needed can be found in [`requirements.txt`](requirements.txt)
+This package was tested on Tensorflow 2.6.2 and Python 3.8.15 .All requirement needed can be found in [`requirements.txt`](requirements.txt)
 
 ## Software requirements
 This package is supported for *Linux*. The package has been tested on Linux: Ubuntu 20.04.6 LTS
