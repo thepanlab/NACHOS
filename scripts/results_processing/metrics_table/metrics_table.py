@@ -116,7 +116,13 @@ def total_output(accuracies, standard_error, output_path, output_file, round_to,
     # Get names of columns and subjects
     configs = list(accuracies['individual'].keys())
     test_folds = list(accuracies['individual'][configs[0]].keys())
-    val_folds = list(standard_error[configs[0]].keys())
+    
+    # Extracting val_folds from the test fold values for accuracies
+    val_folds_set = set()
+    for dict_val_results in accuracies['individual'][configs[0]].values():
+        val_folds_set.update(list(dict_val_results.keys()))
+    
+    val_folds = list(val_folds_set)
     test_folds.sort()
     val_folds.sort()
     

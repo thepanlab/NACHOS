@@ -131,6 +131,8 @@ class _FoldTrainingInfo():
             os.path.join(self.config['output_path'], 'checkpoints')
         )
         
+        step_lr_logger = StepLearningRateLogger()
+        
         # Early stopping
         if not self.is_outer:
             early_stopping = keras.callbacks.EarlyStopping(
@@ -138,9 +140,9 @@ class _FoldTrainingInfo():
                 patience=self.config['hyperparameters']['patience'], 
                 restore_best_weights=True
             )
-            self.callbacks = (early_stopping, checkpoints)
+            self.callbacks = (step_lr_logger, early_stopping, checkpoints)
         else:
-            self.callbacks = checkpoints
+            self.callbacks = (step_lr_logger, checkpoints)
         
 
 

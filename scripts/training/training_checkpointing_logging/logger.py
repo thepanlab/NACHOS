@@ -2,6 +2,24 @@ import termcolor
 import fasteners
 import dill
 import os
+import tensorflow as tf
+
+class StepLearningRateLogger(tf.keras.callbacks.Callback):
+    def on_train_begin(self, logs=None):
+        self.epochs = self.params.get('epochs')
+        self.steps_per_epoch = self.params.get('steps')
+        print(f"Training will run for {self.epochs} epochs, each with {self.steps_per_epoch} steps.")
+    
+    def on_epoch_begin(self, epoch, logs=None):
+        self.current_epoch = epoch  # Store it if you want to access it in other methods
+    
+    def on_train_batch_begin(self, batch, logs=None):
+        lr = self.model.optimizer._decayed_lr(tf.float32).numpy()
+        step = self.model.optimizer.iterations.numpy()
+        n_epochs = self.params.get('epochs')
+        steps_per_epoch = self.params.get('steps')
+        prefix ="" if ( (step + 1) % steps_per_epoch) == 1 else "\n"
+        print(f"{prefix}Step: {(step+1)-self.current_epoch*self.steps_per_epoch} Step total: {step+1}: Learning rate = {lr:.6f}")
 
 
 def read_log_items(training_output_path, job_name, item_list, rank=None):
