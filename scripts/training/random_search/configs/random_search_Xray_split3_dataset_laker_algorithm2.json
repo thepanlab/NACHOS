@@ -1,0 +1,43 @@
+{
+
+    "seed": 1234,
+
+    "n_trials": 9,
+
+    "hyperparameters": {
+        "batch_size_min": 16,
+        "batch_size_max": 128,
+        "channels": 1,
+        "cropping_position": [40, 10],
+        "do_cropping": false,
+        "epochs": 50,
+        "learning_rate_min": 0.0001,
+        "learning_rate_max": 0.01,
+        "l_momentum": [0.5, 0.9, 0.99],
+        "l_nesterov": [true, false],
+        "l_models":["resnet_50", "InceptionV3",
+                    "Xception" ],
+        "patience": 20
+    },
+
+    "configurations_directory": "/home/pcallec/mif_outer/results/random_search_configurations/algorithm2_Xray_split3_subject",
+    "data_input_directory": "/ssd2/pipeline/datasets/620_file_size/split3_dataset",
+    "output_path": "/home/pcallec/mif_outer/results/algorithm2_Xray_split3",
+    "job_name": "xray_split3",
+    
+    "k_epoch_checkpoint_frequency": 5,
+    
+    "shuffle_the_images": true,
+    "shuffle_the_folds": false,
+    
+    "class_names": ["Cardiomegaly", "No-Finding"],
+    
+    "subject_list": ["Additional", "CheXpert", "MIMIC", "NIH", "PadChest"],
+    "test_subjects": ["Additional"],
+    "validation_subjects": ["Additional", "CheXpert", "MIMIC", "NIH", "PadChest"],
+    
+    "image_size": [224, 224],
+    "target_height": 224,
+    "target_width": 224
+}
+    
