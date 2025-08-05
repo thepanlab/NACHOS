@@ -7,40 +7,6 @@
 </ul> <hr> <br>
 
 
-+ ## ***MPI Init***
-    <ul> 
-        This module, located with the MPI distributed modules, creates a command based on your given configuration input. For example, you can provide multiple IP addresses (as strings) in order to execute a remote, distributed training job. This program will take those addresses and create a command line arguement that will run the training program to your needs. 
-    </ul> <br>
-    
-    * ***You need to have SSH keys established in order to use any IP addresses!*** 
-      * You can find a helpful guide on this topic here: https://medium.com/@jakewies/accessing-remote-machines-using-ssh-55a0fdf5e9d8
-
-    ***Example:*** 
-    >python3 -m -m training.training_multiprocessing.mpi_init --file myfile.json 
-
-    <details>
-
-    * ***Input:*** The configuration file. *(Optional)*
-    * ***Output:*** A command that is printed to the console.
-    * ***example_config.json:***
-        ```json
-        {
-            "cuda_devices": [0, 1],
-            "gpu_addrs": ["10.10.10", "11.11.11"],
-            "n_processes": 2,
-            "is_outer": true
-        }
-        ```
-
-        * ***cuda_devices:*** A list of GPU CUDA devices visible to the program. Should be a list of ints.
-        * ***gpu_addrs:*** A list of IP addresses as strings. If the list is empty, *n_processes* is used instead.
-        * ***n_processes:*** The number of worker processes to run. The program adds one extra master process to this number. Only used if no IP addresses are given.
-        * ***is_outer:*** If the program should be run as the inner or outer loop.
-  
-    </details> </hr> <br> <br>
-<hr>
-
-
 + ## ***Inner Loop***
     <ul> 
         This runs the inner loop of the k-fold cross validation process. This can be called using the Makefile and manually within the command line from within the scripts folder. Do to its modularization implementation, it will most likely break when called outside of this location. The default configuration folder is "training/training_config_files".
@@ -123,6 +89,13 @@
     </details> </hr> <br> <br>
 <hr>
 
++ ## ***Distributed in multiple servers***
+Server 1: 10.244.244.44 (3 processes: master process + 2 gpu process)
+Server 2: 10.244.244.45 (1 process: 1 gpu process)
+
+```bash
+mpirun -n 4 --hosts 10.244.244.44,10.244.244.45:1 python3 -m training.training_multiprocessing.loop_inner.multiprocessed_training_inner_loop --file config_ngpu3.json
+```
 
 + ## ***Outer Loop***
     <ul> 
