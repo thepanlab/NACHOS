@@ -1,0 +1,10 @@
+,index,model,batch_size,learning_rate,decay,momentum,bool_nesterov
+0,0,resnet_50,128,0.01,0.01,0.9,True
+1,1,InceptionV3,16,0.001,0.001,0.9,False
+2,2,resnet_50,64,0.01,0.01,0.99,True
+3,3,Xception,16,0.001,0.001,0.5,False
+4,4,resnet_50,64,0.01,0.01,0.5,False
+5,5,resnet_50,32,0.01,0.01,0.99,True
+6,6,resnet_50,32,0.0001,0.0001,0.99,False
+7,7,resnet_50,32,0.01,0.01,0.9,True
+8,8,InceptionV3,64,0.01,0.01,0.5,False
