@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 data/
-results
+results/*
 !results/random_search_configurations/
 !results/random_search_configurations/**
 
