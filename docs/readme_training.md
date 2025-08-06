@@ -173,6 +173,96 @@ mpirun -n 4 --hosts 10.244.244.44,10.244.244.45:1 python3 -m training.training_m
     </details> </hr> <br> <br>
 <hr>
 
++ ## ***Random Search***
+> python3 -m training.random_search.create_random_json -j myfile.json OR --json myfile.json OR --load_json myfile.json
+
+<details>
+* ***example_model_config.json:***:
+
+```json
+{
+    "seed": 1234,
+
+    "n_trials": 9,
+
+    "hyperparameters": {
+        "batch_size_min": 16,
+        "batch_size_max": 128,
+        "channels": 1,
+        "cropping_position": [40, 10],
+        "do_cropping": false,
+        "epochs": 50,
+        "learning_rate_min": 0.0001,
+        "learning_rate_max": 0.01,
+        "l_momentum": [0.5, 0.9, 0.99],
+        "l_nesterov": [true, false],
+        "l_models":["resnet_50", "InceptionV3",
+                    "Xception" ],
+        "patience": 20
+    },
+
+    "configurations_directory": "/home/pcallec/mif_outer/results/random_search_configurations/split1_random",
+    "data_input_directory": "/home/pcallec/analyze_images/results/data/OCT_paper/split_random",
+    "output_path": "/home/pcallec/mif_outer/results/random_search_results/split1",
+    "job_name": "oct_split1",
+    
+    "k_epoch_checkpoint_frequency": 5,
+    
+    "shuffle_the_images": true,
+    "shuffle_the_folds": false,
+    
+    "class_names": ["cortex", "medulla","pelvis"],
+    
+    "subject_list": ["fold1", "fold2", "fold3", "fold4", "fold5",
+                    "fold6", "fold7", "fold8", "fold9", "fold10"],
+    "test_subjects": ["fold1", "fold2", "fold3", "fold4", "fold5",
+                    "fold6", "fold7", "fold8", "fold9", "fold10"],
+    "validation_subjects": ["fold1", "fold2", "fold3", "fold4", "fold5",
+                            "fold6", "fold7", "fold8", "fold9", "fold10"],
+    
+    "image_size": [210, 185],
+    "target_height": 210,
+    "target_width": 185
+}
+```
+
+- **`seed`**: Random seed used for reproducibility.  
+- **`n_trials`**: Number of random hyperparameter configurations to generate and evaluate.
+
+- **`batch_size_min`**, **`batch_size_max`**: Range of batch sizes to sample from (powers of 2, e.g., 16 to 128).
+- **`channels`**: Number of image channels (e.g., 1 for grayscale).
+- **`cropping_position`**: `[row, col]` coordinate to start cropping (if cropping is enabled).
+- **`do_cropping`**: Whether to crop the input images.
+- **`epochs`**: Number of training epochs.
+- **`learning_rate_min`**, **`learning_rate_max`**: Range of learning rates to sample from (e.g., 0.0001 to 0.01).
+- **`l_momentum`**: List of momentum values for the SGD optimizer (e.g., `[0.5, 0.9, 0.99]`).
+- **`l_nesterov`**: Whether to apply Nesterov momentum (e.g., `[true, false]`).
+- **`l_models`**: Model architectures to choose from:
+  - `"resnet_50"`
+  - `"InceptionV3"`
+  - `"Xception"`
+- **`patience`**: Number of epochs to wait for improvement before applying early stopping.
+
+- **`data_input_directory`**: Path to the input dataset (no specific structure required).
+- **`output_path`**: Path to save the model outputs and results.
+- **`configurations_directory`**: Directory to save the generated hyperparameter configurations.
+- **`job_name`**: Name of the job used in logging and file naming.
+- **`k_epoch_checkpoint_frequency`**: How frequently (in epochs) to save model checkpoints.
+
+- **`shuffle_the_images`**: Whether to randomly shuffle image paths before training.
+- **`shuffle_the_folds`**: Whether to randomly shuffle the assignment of folds.
+
+- **`class_names`**: List of class labels (e.g., `["cortex", "medulla", "pelvis"]`).
+- **`subject_list`**: List of all subject folds (e.g., `["fold1", ..., "fold10"]`).
+- **`test_subjects`**: Folds to be used for testing.
+- **`validation_subjects`**: Folds to be used for validation.
+
+- **`image_size`**: Size of each image `[height, width]`.
+- **`target_height`**, **`target_width`**: Dimensions that images are resized to before training.
+  
+Output configurations can be found at [`results/random_search_configurations/algorithm1_Xray_split1_random`](/results/random_search_configurations/algorithm1_Xray_split1_random)
+    </details> </hr> <br> <br>
+<hr>
 
 + ## ***Checkpoint and Logging Modules***
     <ul> 
