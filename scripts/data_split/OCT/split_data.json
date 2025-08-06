@@ -1,0 +1,9 @@
+{
+    "directory_data": "/home/pcallec/analyze_images/data/CW_2D_paul",
+    "type_file": "png",
+    "directory_output_random":"/home/pcallec/analyze_images/results/data/OCT_paper/split_random",
+    "directory_output_volume":"/home/pcallec/analyze_images/results/data/OCT_paper/split2_volume",
+    "list_classes": ["cortex", "medulla", "pelvis"],
+    "number_of_folds": 10,
+    "random_seed":1234
+}
