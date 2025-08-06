@@ -13,6 +13,9 @@ This package is supported for *Linux*. The package has been tested on Linux: Ubu
 * How to run the training can be found in [`/docs/readme_training.md`](/docs/readme_training.md)
 * How to run the results processing can be found in [`/docs/readme_results_processing.md`](/docs/readme_results_processing.md)
 
+## Logs training and validation for paper
+* The training and validation accuracies for all epochs used for experiments in the paper can be in [`results/HPO`](/results/HPO)
+
 ## Data
 The data used in the paper can be found in [Zenodo](https://zenodo.org/records/14847200).
 
