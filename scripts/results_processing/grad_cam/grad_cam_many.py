@@ -123,7 +123,7 @@ def generate_json_and_run(json_init, input_path, output_path):
     grad_cam.main(this_json)
 
 
-def run_program(image_addrs, config, run_program):
+def run_program(image_addrs, config):
     """ Runs the main program for each image
 
     Args:
