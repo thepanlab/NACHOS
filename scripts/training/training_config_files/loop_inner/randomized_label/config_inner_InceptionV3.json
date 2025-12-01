@@ -1,0 +1,34 @@
+{
+    "hyperparameters": {
+        "batch_size": 32,
+        "channels": 1,
+        "cropping_position": [40, 10],
+        "decay": 0.01,
+        "do_cropping": false,
+        "epochs": 50,
+        "learning_rate": 0.01,
+        "momentum": 0.9,
+        "bool_nesterov": true,
+        "patience": 10
+    },
+
+    "data_input_directory":"/ssd2/pcallec/data_kidney_structure/CW_Kidney_Structure_random_cv",
+    "output_path": "../results/randomized_label",
+    "job_name": "randomized_label",
+    
+    "k_epoch_checkpoint_frequency": 5,
+
+    "shuffle_the_images": true,
+    "shuffle_the_folds": false,
+    "seed": 9,
+
+    "class_names": ["calyx","cortex","fat","medulla", "pelvis"],
+    "selected_model_name": "InceptionV3",
+    
+    "subject_list": ["AIKW139-right", "AILY469-left", "AJBF273-left", "AJBH331-left", "AILU486-left", "AJAA295-left", "AIIG369-right", "AJBB186-right", "AIJV450-left", "AJBH331-right", "AIKS388-right", "AJA3296-right", "AIKS388-left"],
+    "test_subjects": ["AIKW139-right"],
+    "validation_subjects": ["AILY469-left", "AJBF273-left", "AJBH331-left", "AILU486-left", "AJAA295-left"],
+    
+    "target_height": 1050,
+    "target_width": 650
+}
